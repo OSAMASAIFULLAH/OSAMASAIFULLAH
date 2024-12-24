@@ -1,4 +1,4 @@
- let text="my name is usama saif"
- (/a/g)
- let a=text.search("a")
- console.log(a)
+ let regex=/[am]/gi
+ let text="hi i am usama sAifm"
+ console.log(text.replace(regex,"a"))
+//  console.log(text.replace(regex))
