@@ -1,10 +1,19 @@
 import { useState } from "react"
 function Clc(props){
-    const [typedNumbers, setTypedNumbers] = useState(""); 
+    var [typedNumbers, setTypedNumbers] = useState(""); 
 
     const handleclick = (digit) => {
         setTypedNumbers((prev) => prev + digit);
     };
+    const handlAdd = () => {
+       var arr=typedNumbers.split("+").map(Number)
+       let sum=0
+       for(let i=0;i<arr.length;i++){
+         sum=sum+arr[i]
+       }
+  setTypedNumbers(sum)
+
+  }
    return(<> <div style={{
     display:"flex",
     justifySelf:"center",
@@ -74,7 +83,9 @@ function Clc(props){
          <button style={{
             padding:"10px 40px",
             fontSize:"30px",
-         }}  onClick={()=>{handleclick(3)}}>3</button>
+         }}  onClick={()=>{handleclick(3
+            
+         )}}>3</button>
          
 
             </div>
@@ -148,21 +159,25 @@ function Clc(props){
             }}>
          
          <button style={{
-             padding:"7px 28px",
+             padding:"4px 20px",
             fontSize:"30px",
          }} onClick={()=>{handleclick("+")}}>+</button>
          <button style={{
-             padding:"7px 28px",
+             padding:"4px 20px",
             fontSize:"30px",
          }}onClick={()=>{handleclick("-")}}>-</button>
          <button style={{
- padding:"7px 28px",
+ padding:"4px 20px",
              fontSize:"30px",
          }}onClick={()=>{handleclick("*")}}>*</button>
          <button style={{
-            padding:"7px 28px",
+            padding:"4px 20px",
             fontSize:"30px",
          }}onClick={()=>{handleclick("/")}}>/</button>
+         <button style={{
+            padding:"4px 20px",
+            fontSize:"30px",
+         }}onClick={()=>{handlAdd()}}>=</button>
             </div>
            
 
