@@ -5,7 +5,7 @@ function App(){
 
   return(
     <div>
-      <Clc name={n} />
+      <Clc name={n}/>
 
     </div>
   )

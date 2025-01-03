@@ -1,18 +1,33 @@
 import { useState } from "react"
 function Clc(props){
     var [typedNumbers, setTypedNumbers] = useState(""); 
+    var[result,setresult]=useState("")
 
     const handleclick = (digit) => {
         setTypedNumbers((prev) => prev + digit);
     };
     const handlAdd = () => {
-       var arr=typedNumbers.split("+").map(Number)
-       let sum=0
-       for(let i=0;i<arr.length;i++){
-         sum=sum+arr[i]
-       }
-  setTypedNumbers(sum)
-
+      let Operator=[]
+      let operand=[]
+let arr=typedNumbers.split('').map((element)=>{
+   if((element==='+')||(element==='-')){
+      Operator.push(element)
+   }
+   else{
+      operand.push(element)
+   }
+   let operand1=operand.map(Number)
+   result=operand1[0]
+   for(let i=0;i<Operator.length;i++){
+      if(Operator[i]==='+'){
+         result=result+operand1[i+1]
+      }
+      else if(Operator[i]==='-'){
+         result=result-operand1[i+1]
+      }
+   }
+})
+setresult(result)
   }
    return(<> <div style={{
     display:"flex",
@@ -48,7 +63,8 @@ function Clc(props){
                 marginLeft:"8px",
                 backgroundColor:"#7a6666",
             }}>
-<h3 id="one"> {typedNumbers}</h3>
+<h3 id="one"> {typedNumbers}</h3><br/>
+<h3>{result}</h3>
             </div>
             <div style={{height:"400px",
                 width:"350px",
